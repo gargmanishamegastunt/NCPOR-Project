@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction</title>
+</head>
+<body align = center>
+<h1> Prediction: {{kind}} </h1>
+<h4> Training data: 2016(June) to 2018(December)</h4>
+<div class="row">
+    <div class="column">
+
+        <img
+        src="data:image/png;base64,{{pred}}"
+        alt=""
+        height="600px"
+        width="1000px"
+      />
+    </div>
+</div>
+<div>
+	<h2> Classification Report </h2>
+<table border="1px"  align = "center" valign="top" >
+		<thead>
+    <tr style="text-align: right;">
+
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+	<tbody>
+	<tr>
+		{% for i, r in cr.iterrows %}
+		<tr>
+		<th> {{i}}</th>
+	<td>{{r.precision}}</td>
+		<td>{{r.recall}}</td>
+		<td>{{r.f1}}</td>
+		<td>{{r.support}}</td>
+
+		</tr>
+		{% endfor %}
+	</tr>
+	</tbody>
+</table>
+
+</div>
+</body>
+</html>

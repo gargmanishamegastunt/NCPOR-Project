@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Year </title>
+	<br>
+	<br>
+	<br>
+    <h2 align = "center"> Blizzard Prediction / Pattern System </h2>
+	<h2 align = "center"> Digital Current Weather Information System (DCWIS), Bharati Station, Antarctica </h2>
+
+
+</head>
+<body align = "center" class = bubbles>
+
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+
+<div style="text-align: center; margin-top: 100px;">
+      <form action="{% url 'year' %}" method="post">
+        <h3>Select the Year: </h3>
+    	<select name="year" >
+    		<option value=''>--Select Year--</option>
+    		<option selected value='2016'>2016</option>
+			<option value='2017'>2017</option>
+			<option value='2018'>2018</option>
+			<option value='2019'>2019</option>
+    	</select>
+			<input type="submit" value="Submit">
+      </form>
+    </div>
+
+
+</body>
+
+<link rel="stylesheet" type = "text/css" href="{% static 'css/style.css' %}">
+</html>

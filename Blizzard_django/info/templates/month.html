@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frequency</title>
+	 <h1 align = "center"> Blizzard Prediction / Pattern System </h1>
+	<h2 align = "center"> Digital Current Weather Information System (DCWIS), Bharati Station, Antarctica </h2>
+
+    <h3 align = "center"> Monthy Frequency of blizzards for {{year}} </h3>
+</head>
+</head>
+<body align = "center">
+
+<table border="1px"  align = "center" valign="top" >
+	<thead>
+	<th> Month </th>
+	<th> Number of Hours</th>
+	<th> Dates</th>
+	</thead>
+	<tbody>
+	<tr>
+		{% for i, r in df.iterrows %}
+		<tr>
+	<td> {{ r.Month }}</td>
+		<td> {{ r.hours}}</td>
+
+	<td> {{ r.newdates}}</td>
+
+		</tr>
+		{% endfor %}
+	</tr>
+	</tbody>
+</table>
+
+	<div>
+		<h3>To see the variation of feature with time during blizzard</h3>
+		<form method = "post" action="{% url 'month' %}">
+			<input type="hidden" id="year" name="year" value="{{year}}">
+			<h3>Select the Month: </h3>
+    	<select name="mon" >
+    		<option value=''>--Select Month--</option>
+    		<option value='1'>January</option>
+			<option value='2'>February</option>
+			<option value='3'>March</option>
+			<option value='4'>April</option>
+			<option selected value='5'>May</option>
+			<option value='6'>June</option>
+			<option value='7'>July</option>
+			<option value='8'>August</option>
+			<option value='9'>September</option>
+			<option value='10'>October</option>
+			<option value='11'>November</option>
+			<option value='12'>December</option>
+    	</select>
+			<h3>Select the Features: </h3>
+		<select name="feature1" >
+    		<option selected value=''>--Select 1st Feature--</option>
+    		<option value='tempr'>Temperature</option>
+			<option value='ap'>Air Pressure</option>
+			<option value='ws'>Wind Speed</option>
+			<option value='wd'>Wind Direction</option>
+			<option value='rh'>RH</option>
+    	</select>
+			<select name="feature2" >
+    		<option selected value=''>--Select 2nd Feature--</option>
+    		<option value='tempr'>Temperature</option>
+			<option value='ap'>Air Pressure</option>
+			<option value='ws'>Wind Speed</option>
+			<option value='wd'>Wind Direction</option>
+			<option value='rh'>RH</option>
+    	</select>
+
+			<h3>Select the Types of graph for the features </h3>
+		<select name="gtype1" >
+    		<option selected value=''>--Select Type for 1st--</option>
+    		<option value='1'>Feature vs time</option>
+			<option value='2'>Differential graph</option>
+    	</select>
+			<select name="gtype2" >
+    		<option selected value=''>--Select Type for 2nd--</option>
+    		<option value='1'>Feature vs time</option>
+			<option value='2'>Differential graph</option>
+    	</select>
+			<input type="submit" value="Submit">
+			</form>
+			{% if year == '2019' %}
+			<form method = "post" action="{% url 'prediction' %}">
+			<h3>See Prediction</h3>
+		<select name="prediction" >
+    		<option selected value=''>--Select Type--</option>
+    		<option value='cnn'>CNN</option>
+			<option value='rnn'>RNN</option>
+			<option value='ann'>ANN</option>
+			<option value='LSTM'>LSTM</option>
+    	</select>
+			<select name="feature" >
+    		<option selected value=''>--Feature--</option>
+    		<option value='tempr'>Temperature</option>
+			<option value='ap'>Air Pressure</option>
+			<option value='ws'>Wind Speed</option>
+			<option value='wd'>Wind Direction</option>
+			<option value='rh'>RH</option>
+    	</select>
+			<label for="start">Start Date</label>
+			<input type="date" id="start" name="start"
+				value="2019-01-01"
+       min="2019-01-01" max="2019-06-19">
+				<label for="end">End Date</label>
+			<input type="date" id="end" name="end"
+				value="2019-01-02"
+       min="2019-01-02" max="2019-06-19">
+				<input type="submit" value="Submit">
+			</form>
+
+			{% endif %}
+
+
+
+
+
+    </div>
+
+</body>
+</html>
